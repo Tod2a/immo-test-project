@@ -1,22 +1,30 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5050;
 
+const mongoURI = 'mongodb://localhost:27017/immoTest';
+
 app.use(express.json());
 app.use(cors());
 app.use('/assets/images', express.static('assets/images'));
 
-const immo = {
-    Name: 'Maison de rêve',
-    Price: 300000,
-    Description: 'Superbe maison avec vue sur la mer',
-    Image: 'http://localhost:5050/assets/images/immo1.jpg'
-};
+mongoose.connect(mongoURI)
+    .then(() => console.log('Connecté à MongoDB'))
+    .catch((err) => console.error('Erreur de connexion à MongoDB:', err));
 
-// Exemple de route
-app.get('/api/immo', (req, res) => {
-    res.json(immo);
+
+const Immo = require('./models/immoModel');
+
+
+app.get('/api/immo', async (req, res) => {
+    try {
+        const immos = await Immo.find();
+        res.json(immos);
+    } catch (err) {
+        res.status(500).json({ message: 'Erreur lors de la récupération des données', error: err });
+    }
 });
 
 app.listen(PORT, () => {
