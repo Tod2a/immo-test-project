@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Flex, Image, Text } from '@mantine/core';
-import BienImage from '../../assets/images/immo1.jpg';
 
 
 export function ImmoCard() {
