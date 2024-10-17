@@ -27,6 +27,19 @@ app.get('/api/immo', async (req, res) => {
     }
 });
 
+app.get('/api/immo/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const immo = await Immo.findById(id);
+        if (!immo) {
+            return res.status(404).json({ message: 'Bien non trouvé' });
+        }
+        res.json(immo);
+    } catch (err) {
+        res.status(500).json({ message: 'Erreur lors de la récupération du bien', error: err });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
