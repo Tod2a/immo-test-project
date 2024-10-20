@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 
 import { MultiLayout } from './layout/MultiLayout.tsx';
-import { Product } from './pages/Product.tsx';
+import Product from './pages/Product.tsx';
 import { Products } from './pages/Products.tsx';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 

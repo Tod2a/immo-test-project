@@ -15,7 +15,7 @@ export function DisplayCard({ id, name, price }: DisplayCardProps) {
                 <Text style={{ width: '20%', textAlign: 'center' }}>{price} €</Text>
 
                 <Button variant="light" color="blue" radius="md" onClick={() => console.log('Button clicked!')}>
-                    <Link to={`/product/${id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Link to={`/product`} style={{ textDecoration: 'none', color: 'inherit' }}>
                         Voir les détails
                     </Link>
                 </Button>
