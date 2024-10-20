@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Card, Text, Button, Group } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Text } from "@mantine/core";
+import { DisplayCard } from "../components/Cards/DisplayCard";
 
 interface Immo {
     _id: string;
@@ -28,15 +28,12 @@ export function Products() {
                 <Text>Aucun bien à afficher</Text>
             ) : (
                 properties.map((property) => (
-                    <Card key={property._id} shadow="sm" padding="lg">
-                        <Group>
-                            <Text>{property.Name}</Text>
-                            <Text>{property.Price} €</Text>
-                        </Group>
-                        <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-                            <Link to={`/product/${property._id}`}>Voir les détails</Link>
-                        </Button>
-                    </Card>
+                    <DisplayCard
+                        key={property._id}
+                        id={property._id}
+                        name={property.Name}
+                        price={property.Price}
+                    />
                 ))
             )}
         </>

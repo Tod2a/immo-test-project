@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Text } from "@mantine/core";
-import { ImmoCard } from "../components/ImmoCard/Immocard.tsx"; // Assurez-vous d'importer correctement votre composant
+import { Text, Button } from "@mantine/core";
+import { ImmoCard } from "../components/Cards/Immocard.tsx"; // Assurez-vous d'importer correctement votre composant
 
 interface Immo {
     _id: string;
@@ -11,9 +11,10 @@ interface Immo {
     Image: string;
 }
 
-export function Product() {
+const Product: React.FC = () => {
     const { id } = useParams();
     const [property, setProperty] = useState<Immo>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProperty = async () => {
@@ -29,12 +30,27 @@ export function Product() {
     }
 
     return (
-        <ImmoCard
-            id={property._id}
-            name={property.Name}
-            price={property.Price}
-            description={property.Description}
-            image={property.Image}
-        />
+        <>
+            <div>
+                <Button
+                    onClick={() => navigate(-1)}
+                    variant="light"
+                    color="blue"
+                    radius="md"
+                    mb="md"
+                >
+                    Retour
+                </Button>
+            </div>
+            <ImmoCard
+                id={property._id}
+                name={property.Name}
+                price={property.Price}
+                description={property.Description}
+                image={property.Image}
+            />
+        </>
     );
 }
+
+export default Product
