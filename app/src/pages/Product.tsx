@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Text, Button } from "@mantine/core";
-import { ImmoCard } from "../components/Cards/Immocard.tsx"; // Assurez-vous d'importer correctement votre composant
+import { ImmoCard } from "../components/Cards/ImmoCard.tsx";
 
 interface Immo {
     _id: string;
