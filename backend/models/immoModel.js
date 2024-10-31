@@ -5,7 +5,7 @@ const immoSchema = new mongoose.Schema({
     Price: { type: Number, required: true },
     Description: { type: String, required: true },
     Image: { type: String, required: true },
-}, { collection: 'biens' });
+}, { collection: 'Builds' });
 
 const Immo = mongoose.model('Immo', immoSchema);
 module.exports = Immo;
