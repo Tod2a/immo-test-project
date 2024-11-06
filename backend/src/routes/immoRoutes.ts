@@ -17,17 +17,17 @@ interface IParams {
     id: string;
 }
 
-//router.get("/:id", async (req: Request<IParams>, res: Response) => { // Typage explicite ici
-//const { id } = req.params;
-//try {
-//const immo = await Immo.findById(id);
-//if (!immo) {
-//return res.status(HttpStatusCodes.NOT_FOUND).json({ message: 'Bien non trouvé' });
-//}
-//res.json(immo);
-//} catch (err) {
-//res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Erreur lors de la récupération du bien', error: err });
-//}
-//});
+router.get("/:id", async (req: Request<IParams>, res: Response) => {
+    const { id } = req.params;
+    try {
+        const immo = await Immo.findById(id);
+        if (!immo) {
+            return res.status(HttpStatusCodes.NOT_FOUND).json({ message: 'Bien non trouvé' });
+        }
+        res.json(immo);
+    } catch (err) {
+        res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Erreur lors de la récupération du bien', error: err });
+    }
+});
 
 export default router;
