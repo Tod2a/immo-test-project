@@ -12,7 +12,7 @@ export function ImmoForm({ buildId }: ImmoFormProp) {
         const formObject = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch("http://localhost:5050/immoform", {
+            const response = await fetch("http://localhost:5050/api/immoform", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

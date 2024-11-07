@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import immoRoutes from "./routes/immoRoutes";
 import immoform from "./routes/immoForm";
+import User from "./routes/userRoutes";
 import path from 'path';
 
 const app = express();
@@ -21,7 +22,8 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 app.use("/api/immo", immoRoutes);
-app.use("/immoform", immoform);
+app.use("/api/immoform", immoform);
+app.use("/api/users", User);
 
 const port = app.get("port");
 export const server = app.listen(port, () =>
