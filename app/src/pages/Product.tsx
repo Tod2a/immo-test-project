@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Text, Button } from "@mantine/core";
 import { ImmoCard } from "../components/Cards/ImmoCard.tsx";
+import { ImmoForm } from "../components/Form/immoForm.tsx";
 
 interface Immo {
     _id: string;
@@ -48,6 +49,9 @@ const Product: React.FC = () => {
                 price={property.Price}
                 description={property.Description}
                 image={property.Image}
+            />
+            <ImmoForm
+                buildId={property._id}
             />
         </>
     );
