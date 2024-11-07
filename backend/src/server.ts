@@ -3,6 +3,7 @@ import { connectDB } from "./config/database";
 import bodyParser from "body-parser";
 import cors from "cors";
 import immoRoutes from "./routes/immoRoutes";
+import immoform from "./routes/immoForm";
 import path from 'path';
 
 const app = express();
@@ -20,6 +21,7 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 app.use("/api/immo", immoRoutes);
+app.use("/immoform", immoform);
 
 const port = app.get("port");
 export const server = app.listen(port, () =>
